@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="124px" height="150px" viewBox="0 0 124 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Donate bookmark</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 1.38836311e-13 112 1.38836311e-13 112 165 56 150 0 165"></polygon>
+        <filter x="-8.5%" y="-5.2%" width="117.0%" height="111.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.413043478 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Desktop-HD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1071.000000, 0.000000)">
+        <g id="Donate-bookmark" transform="translate(1077.000000, -22.000000)">
+            <g id="Rectangle-Copy">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#F7941D" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <text id="Show-your-support" font-family="SignPainter-HouseScript, SignPainter" font-size="24" font-weight="normal" line-spacing="22" fill="#FFFFFF">
+                <tspan x="16.012" y="56">Show your </tspan>
+                <tspan x="28.564" y="78">support</tspan>
+                <tspan x="84.436" y="78" font-family="Montserrat-LightItalic, Montserrat" font-size="11" font-style="italic" font-weight="300">  </tspan>
+            </text>
+            <text id="DONATE-NOW" font-family="Montserrat-Bold, Montserrat" font-size="20" font-weight="bold" line-spacing="22" fill="#FFFFFF">
+                <tspan x="5" y="110">DONATE</tspan>
+                <tspan x="22.06" y="132">NOW</tspan>
+                <tspan x="86.729" y="135.520081" font-family="Montserrat-LightItalic, Montserrat" font-size="11" font-style="italic" font-weight="300"> </tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'SignPainter';
+    src: url('/wp-content/themes/kma-slim/fonts/signpainter/signpainter_housescript_regular-webfont.woff2') format('woff2'),
+         url('/wp-content/themes/kma-slim/fonts/signpainter/signpainter_housescript_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
