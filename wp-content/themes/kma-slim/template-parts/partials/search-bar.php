@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="columns is-multiline is-centered">
+    <div class="columns is-multiline is-aligned is-justified">
         <div class="column is-narrow">
             <h4 class="title font-signpainter is-1">Site search:</h4>
         </div>

@@ -245,13 +245,18 @@ body {
   }
 
   .top-two {
+    background-image: url("/wp-content/themes/kma-slim/img/background.png");
+    background-color: $info;
+    padding: 1rem;
+
     @media screen and (min-width: $desktop) {
       background-color: $light;
+      background-image: none;
+      padding: 0;
     }
 
     .navbar {
       justify-content: center;
-      padding: 0 0 1rem;
 
       @media screen and (min-width: $tablet) {
         justify-content: flex-end;
@@ -264,14 +269,21 @@ body {
     }
 
     #MobileNavBurger {
+      border-radius: 2rem;
+      border-width: 2px;
+      width: 120px;
+      font-size: .9em;
+      font-weight: bold;
       display: inline-flex;
       align-items: center;
-      color: $info;
+      color: $primary;
       cursor: pointer;
-      padding-right: 0;
-      background-color: transparent !important;
-      height: 2.5em;
+      padding-right: .5rem;
+      padding-left: 1rem;
+      background-color: #fff !important;
+      height: 3rem;
       margin: 0 .5rem;
+      text-transform: uppercase;
 
       @media screen and (min-width: $desktop) {
         display: none;
@@ -280,14 +292,14 @@ body {
       .navbar-burger {
         cursor: pointer;
         display: block;
-        height: 2.25rem;
+        height: 3rem;
         position: relative;
-        width: 2.25rem;
+        width: 2.75rem;
         margin-left: auto;
         background-color: transparent !important;
 
         span {
-          background-color: $info !important;
+          background-color: $primary !important;
         }
       }
     }
@@ -300,6 +312,14 @@ body {
       @media screen and (max-width: $desktop) {
         display: none;
       }
+    }
+
+    .dontate-button {
+      border:2px solid #FFF;
+      width: 120px;
+      font-size: .9em;
+      font-weight: bold;
+      height: 3rem !important;
     }
 
     .navbar-item {
@@ -418,7 +438,7 @@ body {
     background-image: url("/wp-content/themes/kma-slim/img/mobile/header-image.png");
     background-size: cover;
     background-position: top center;
-    height: 414px;
+    height: auto;
     @media screen and (min-width: $tablet) {
       height: 414px;
       background-image: url("/wp-content/themes/kma-slim/img/header-image.png");
@@ -427,37 +447,241 @@ body {
       height: 547px;
     }
 
+    .header-photo {
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+
     .container { height: 100%; }
 
     .hero-content {
       align-items: flex-end;
       justify-content: center;
       height: 100%;
-      padding: 2rem;
+      padding: 0 2rem 2rem;
 
       @media screen and (min-width: $tablet) {
         justify-content: flex-start;
         align-items: center;
+        padding: 0 2rem 4rem;
       }
 
       @media screen and (min-width: $desktop) {
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0;
+        padding: 0 0 3rem;
       }
 
       .hero-item {
         h1 {
-          color: $info;
-          font-weight: $weight-bold;
-          @media screen and (max-width: $tablet) {
-            font-size: 35px;
+          span {
+            position: absolute;
+            line-height: .75em;
+            font-weight: $weight-bold;
+            @media screen and (min-width: $tablet) {
+              font-size: 1.7em;
+            }
+            @media screen and (min-width: $desktop) {
+              font-size: 2em;
+            }
+          }
+
+          .literacy {
+            margin-top: -.7em;
+            color: $info;
+            z-index: 8;
+          }
+          .culture {
+            color: $secondary;
+            z-index: 9;
+          }
+          .community {
+            color: $primary;
+            z-index: 10;
+            margin-top: .7em;
           }
         }
         strong {
           color: $info;
         }
         padding: 4rem 0 0;
+      }
+    }
+  }
+
+  .next-event {
+    h4, p, a { color: $white; }
+    background-color: $primary;
+    text-align: center;
+    padding: 2rem 1.5rem;
+
+    @media screen and (min-width: $desktop){
+      text-align: left;
+      padding: 1rem;
+    }
+
+    p {
+      font-size: .9em;
+      a {
+        text-decoration: underline;
+        @media screen and (max-width: $tablet){
+          display: block;
+          padding: 1rem;
+        }
+      }
+    }
+  }
+
+  .home-about {
+    overflow: hidden;
+    background-color: #000;
+
+    @media screen and (min-width: $desktop) {
+      background: url("/wp-content/themes/kma-slim/img/martin-theater.jpg") center right no-repeat #000;
+      background-size: 50% auto;
+    }
+
+    .gradient {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#005b85+0,005b85+100&1+0,1+23,0+61 */
+      background: -moz-linear-gradient(left, rgba(0,91,133,1) 0%, rgba(0,91,133,1) 23%, rgba(0,91,133,0) 61%, rgba(0,91,133,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba(0,91,133,1) 0%,rgba(0,91,133,1) 23%,rgba(0,91,133,0) 61%,rgba(0,91,133,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba(0,91,133,1) 0%,rgba(0,91,133,1) 23%,rgba(0,91,133,0) 61%,rgba(0,91,133,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b85', endColorstr='#00005b85',GradientType=1 ); /* IE6-9 */
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+
+      @media screen and (min-width: $desktop){
+        text-align: left;
+        padding: 4rem 0;
+        height: 40rem;
+      }
+    }
+
+    .content {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      @media screen and (min-width: $tablet){
+        padding: 3rem 2rem;
+      }
+
+      @media screen and (min-width: $desktop){
+        align-items: flex-start;
+        text-align: left;
+        padding: 4rem 0;
+      }
+
+      p, h1, h2, h3 {
+        color: #FFF;
+      }
+
+      .title {
+        font-weight: $weight-bold;
+      }
+
+      .button {
+        background-color: #FFF !important;
+        height: 3rem !important;
+        font-size: .9em;
+        font-weight: $weight-bold;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        color: $primary;
+        border:2px solid $primary;
+      }
+    }
+  }
+
+  .next-event-large {
+    @media screen and (min-width: $table){
+      height: 30rem;
+      .columns { height: 100%; }
+    }
+    @media screen and (min-width: $desktop){
+      height: 36rem;
+      .columns { height: 100%; }
+    }
+
+    .event-photo {
+      overflow: hidden;
+      height: 25rem;
+      @media screen and (min-width: $tablet) {
+        height: 30rem;
+      }
+      @media screen and (min-width: $desktop) {
+        height: 100%;
+      }
+      background-size: cover;
+      background-position: center;
+    }
+    .event-details{
+
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#005b85+0,0094ba+100 */
+      background: rgb(0,91,133); /* Old browsers */
+      background: -moz-linear-gradient(left, rgba(0,91,133,1) 0%, rgba(0,148,186,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba(0,91,133,1) 0%,rgba(0,148,186,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba(0,91,133,1) 0%,rgba(0,148,186,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b85', endColorstr='#0094ba',GradientType=1 ); /* IE6-9 */
+      height: auto;
+      @media screen and (min-width: $tablet) {
+        height: 30rem;
+      }
+      @media screen and (min-width: $desktop) {
+        height: 100%;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      @media screen and (min-width: $desktop){
+        align-items: flex-start;
+      }
+
+      .detail-container {
+        padding: 2rem;
+
+        @media screen and (min-width: $desktop){
+          max-width: 500px;
+          padding: 6rem;
+        }
+
+        .title {
+          font-weight: $weight-bold;
+        }
+
+        p, h1, h2, h3, td {
+          color: $white;
+        }
+
+        td.label {
+          opacity: .8;
+          text-align: right;
+          font-size: 13px;
+          padding: 0 .75rem;
+          font-weight: normal;
+        }
+
+        table {
+          margin-bottom: 1rem;
+        }
+
+        .button {
+          background-color: #FFF !important;
+          height: 3rem !important;
+          font-size: .9em;
+          font-weight: $weight-bold;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+          color: $primary;
+          border:2px solid $primary;
+        }
       }
     }
   }

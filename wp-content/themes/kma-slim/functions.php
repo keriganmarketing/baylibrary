@@ -6,6 +6,7 @@
  * @version 1.3
  */
 
+use Includes\Modules\Events\Events;
 use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Helpers\PageField;
@@ -29,6 +30,15 @@ $layouts->addSidebar('Featured Image Sidebar');
 $contact = new SimpleContact();
 $contact->setupAdmin();
 $contact->setupShortcode();
+
+$events = new Events();
+$events->setupAdmin();
+
+$pageField = new PageField();
+$pageField->addField(get_option('page_on_front'), 'Get involved', [
+    'Section Title' => 'text',
+    'Section Text'  => 'wysiwyg'
+]);
 
 add_action( 'after_setup_theme', function() {
 

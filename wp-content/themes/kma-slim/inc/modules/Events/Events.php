@@ -4,10 +4,6 @@ namespace Includes\Modules\Events;
 
 use KeriganSolutions\CPT\CustomPostType;
 
-/**
- * Events Class
- */
-
 // Exit if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
@@ -23,10 +19,14 @@ class Events
      */
     function __construct()
     {
+        date_default_timezone_set('America/Chicago');
+        $this->timezone = new \DateTimeZone('America/Chicago');
+    }
 
-        date_default_timezone_set ( 'America/New_York');
-        $this->timezone = new \DateTimeZone('America/New_York');
-
+    function setupAdmin()
+    {
+        $this->createPostType();
+        $this->createAdminColumns();
     }
 
     /**
@@ -35,41 +35,41 @@ class Events
     public function createPostType()
     {
 
-        $slider = new CustomPostType('Event', array(
-                'supports'           => array('title', 'revisions'),
-                'menu_icon'          => 'dashicons-calendar',
-                'rewrite'            => array('with_front' => true),
-                'has_archive'        => true,
-                'menu_position'      => null,
-                'public'             => true,
-                'publicly_queryable' => true,
-        ));
+        $slider = new CustomPostType('Event', [
+            'supports'           => ['title', 'revisions'],
+            'menu_icon'          => 'dashicons-calendar',
+            'rewrite'            => ['with_front' => true],
+            'has_archive'        => true,
+            'menu_position'      => null,
+            'public'             => true,
+            'publicly_queryable' => true,
+        ]);
 
-        $slider->addMetaBox('Event Details', array(
-                'Photo File'           => 'image',
-                'Start'                => 'date',
-                'End'                  => 'date',
-                'Recurring'            => array(
-                        'type' => 'select',
-                        'data' => array(
-                                'None',
-                                'Monthly',
-                                'Weekly',
-                                'Monthday'
-                        )
-                ),
-                'Time'                 => 'text',
-                'Location'             => 'text',
-                'Show Details'         => 'boolean',
-                'Feature on Home page' => 'boolean',
+        $slider->addMetaBox('Event Details', [
+            'Photo File'           => 'image',
+            'Start'                => 'date',
+            'End'                  => 'date',
+            'Recurring'            => [
+                'type' => 'select',
+                'data' => [
+                    'None',
+                    'Monthly',
+                    'Weekly',
+                    'Monthday'
+                ]
+            ],
+            'Time'                 => 'text',
+            'Location'             => 'textarea',
+            'Tickets Link'         => 'text',
+            'Feature on Home page' => 'boolean',
 
-        ));
+        ]);
 
         $slider->addMetaBox(
-                'Event Description',
-                array(
-                        'HTML' => 'wysiwyg',
-                )
+            'Event Description',
+            [
+                'HTML' => 'wysiwyg',
+            ]
         );
 
     }
@@ -81,21 +81,21 @@ class Events
     {
 
         add_filter('manage_event_posts_columns',
-                function ($defaults) {
-                    $defaults = [
-                    	    'cb'          => '<input type="checkbox" />',
-                            'title'       => 'Title',
-                            'start'       => 'Start',
-                            'end'         => 'End',
-                            'time'        => 'Time',
-                            'location'    => 'Location',
-                            'showdetails' => 'Link to Details',
-                            'featured'    => 'Featured on Home Page',
-                            'photo'       => 'Photo'
-                    ];
+            function ($defaults) {
+                $defaults = [
+                    'cb'          => '<input type="checkbox" />',
+                    'title'       => 'Title',
+                    'start'       => 'Start',
+                    'end'         => 'End',
+                    'time'        => 'Time',
+                    'location'    => 'Location',
+                    'showdetails' => 'Link to Details',
+                    'featured'    => 'Featured on Home Page',
+                    'photo'       => 'Photo'
+                ];
 
-                    return $defaults;
-                }, 0);
+                return $defaults;
+            }, 0);
 
         add_action('manage_event_posts_custom_column', function ($column_name, $post_ID) {
             switch ($column_name) {
@@ -142,18 +142,18 @@ class Events
     {
 
         $request = [
-                'posts_per_page' => $limit,
-                'offset'         => 0,
-                'order'          => 'ASC',
-                'orderby'        => 'meta_value_num',
-                'meta_key'       => 'event_details_start',
-                'post_type'      => 'event',
-                'post_status'    => 'publish',
+            'posts_per_page' => $limit,
+            'offset'         => 0,
+            'order'          => 'ASC',
+            'orderby'        => 'meta_value_num',
+            'meta_key'       => 'event_details_start',
+            'post_type'      => 'event',
+            'post_status'    => 'publish',
         ];
 
         $request = array_merge($request, $args);
 
-        if ( $category != '' ) {
+        if ($category != '') {
             $categoryArray        = [
                 [
                     'taxonomy'         => 'event',
@@ -171,19 +171,19 @@ class Events
 
 
             $outputArray[] = [
-                    'id'        => (isset($post->ID) ? $post->ID : null),
-                    'name'      => (isset($post->post_title) ? $post->post_title : null),
-                    'slug'      => (isset($post->post_name) ? $post->post_name : null),
-                    'photo'     => (isset($post->event_details_photo_file) ? $post->event_details_photo_file : null),
-                    'start'     => (isset($post->event_details_start) ? $post->event_details_start : null),
-                    'end'       => (isset($post->event_details_end) ? $post->event_details_end : null),
-                    'recurring' => (isset($post->event_details_recurring) ? $post->event_details_recurring : null),
-                    'time'      => (isset($post->event_details_time) ? $post->event_details_time : null),
-                    'location'  => (isset($post->event_details_location) ? $post->event_details_location : null),
-                    'details'   => (isset($post->event_details_show_details) ? $post->event_details_show_details : null),
-                    'featured'  => (isset($post->event_details_feature_on_home_page) ? $post->event_details_feature_on_home_page : null),
-                    'content'   => (isset($post->event_description_html) ? $post->event_description_html : null),
-                    'link'      => get_permalink($post->ID),
+                'id'        => (isset($post->ID) ? $post->ID : null),
+                'name'      => (isset($post->post_title) ? $post->post_title : null),
+                'slug'      => (isset($post->post_name) ? $post->post_name : null),
+                'photo'     => (isset($post->event_details_photo_file) ? $post->event_details_photo_file : null),
+                'start'     => (isset($post->event_details_start) ? $post->event_details_start : null),
+                'end'       => (isset($post->event_details_end) ? $post->event_details_end : null),
+                'recurring' => (isset($post->event_details_recurring) ? $post->event_details_recurring : null),
+                'time'      => (isset($post->event_details_time) ? $post->event_details_time : null),
+                'location'  => (isset($post->event_details_location) ? $post->event_details_location : null),
+                'details'   => (isset($post->event_details_show_details) ? $post->event_details_show_details : null),
+                'featured'  => (isset($post->event_details_feature_on_home_page) ? $post->event_details_feature_on_home_page : null),
+                'content'   => (isset($post->event_description_html) ? $post->event_description_html : null),
+                'link'      => get_permalink($post->ID),
             ];
 
         }
@@ -209,7 +209,7 @@ class Events
 
         $lastWeek = date("W", strtotime("$currentYear-$currentMonth-01") - 86400);
 
-        $weekArr = array();
+        $weekArr = [];
         $j       = 1;
         for ($i = $firstWeek; $i <= $lastWeek; $i++) {
             $weekArr[$i] = $j;
@@ -223,7 +223,7 @@ class Events
     private function orderEvents($inputArray)
     {
 
-        $sorter = [];
+        $sorter      = [];
         $returnArray = [];
         reset($inputArray);
 
@@ -239,7 +239,7 @@ class Events
 
     }
 
-    protected function advanceDate( $var )
+    protected function advanceDate($var)
     {
         $today     = date('Ymd');
         $date      = \DateTime::createFromFormat('Ymd', $var['start'], $this->timezone);
@@ -274,11 +274,11 @@ class Events
             }
 
             $dateString = $week . ' ' . $weekDay . ' of next month';
-            $newDate = $todayDate->modify($dateString)->format('Ymd');
+            $newDate    = $todayDate->modify($dateString)->format('Ymd');
         }
         if ($var['recurring'] == 'Monthday') {
 
-            $newDate = $thisYear . ((int) date('n') + 1) . $thisDay;
+            $newDate = $thisYear . ((int)date('n') + 1) . $thisDay;
 
         }
 
@@ -292,22 +292,22 @@ class Events
 
         $metaQuery['meta_query'] = [
             'relation' => 'OR',
-            array(
+            [
                 'key'     => 'event_details_end',
                 'value'   => $today,
                 'compare' => '>='
-            ),
-            array(
+            ],
+            [
                 'key'     => 'event_details_recurring',
                 'value'   => 'none',
                 'compare' => '!='
-            )
+            ]
         ];
 
         $metaQuery   = array_merge($metaQuery, $args);
         $outputArray = $this->getEvents($metaQuery, $category, $limit);
         foreach ($outputArray as $key => $var) {
-            if ($var['start'] < $today +1) {
+            if ($var['start'] < $today + 1) {
                 $outputArray[$key]['start'] = $this->advanceDate($var);
             }
         }
@@ -349,9 +349,9 @@ class Events
 
     public function getDates($event)
     {
-        if($event['start'] == $event['end']){
+        if ($event['start'] == $event['end']) {
             return date('l F j, Y');
-        }else{
+        } else {
 
             $date      = \DateTime::createFromFormat('Ymd', $event['start'], $this->timezone);
             $todayDate = \DateTime::createFromFormat('Ymd', date('Ymd'), $this->timezone);
@@ -389,18 +389,20 @@ class Events
                 $dateString = 'The ' . $thisDay . ' day of each month';
 
             }
-            if($event['recurring'] == 'None'){
+            if ($event['recurring'] == 'None') {
 
                 $startMonth = date('F', strtotime($event['start']));
-                $endMonth = date('F', strtotime($event['end']));
+                $endMonth   = date('F', strtotime($event['end']));
 
-                if($event['start'] == $event['end'] || $event['end'] == ''){
+                if ($event['start'] == $event['end'] || $event['end'] == '') {
                     $dateString = date('l F j, Y', strtotime($event['start']));
-                }else{
-                    if($startMonth == $endMonth){
-                        $dateString = date('l F j', strtotime($event['start'])) . '-' . date('j, Y', strtotime($event['end']));
-                    }else{
-                        $dateString = date('l F j, Y', strtotime($event['start'])) . ' - ' . date('l F j, Y', strtotime($event['end']));
+                } else {
+                    if ($startMonth == $endMonth) {
+                        $dateString = date('l F j', strtotime($event['start'])) . '-' . date('j, Y',
+                                strtotime($event['end']));
+                    } else {
+                        $dateString = date('l F j, Y', strtotime($event['start'])) . ' - ' . date('l F j, Y',
+                                strtotime($event['end']));
                     }
                 }
 

@@ -71,7 +71,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
             <div class="top-two">
                 <div class="container">
                     <nav class="navbar navbar-bottom-row">
-                        <div class="burger button is-info is-rounded is-outlined" id="MobileNavBurger" data-target="MobileNavMenu"
+                        <div class="burger button is-primary is-outlined" id="MobileNavBurger" data-target="MobileNavMenu"
                              @click="toggleMenu">
                             <span class="burger-label">Menu</span>
                             <span class="navbar-burger">
@@ -92,7 +92,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
                             'walker'         => new BulmaNavwalker()
                         ]); ?>
                         <div class="navbar-end is-hidden-desktop">
-                            <a class="button is-primary is-rounded" href="#">Donate Now</a>
+                            <a class="dontate-button button is-primary is-rounded" href="#">Donate Now</a>
                         </div>
                     </nav>
                 </div>
