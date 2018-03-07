@@ -285,7 +285,7 @@ class Events
         return $newDate;
     }
 
-    public function getUpcomingEvents($args, $category = '', $limit = -1)
+    public function getUpcomingEvents($args = [], $category = '', $limit = -1)
     {
 
         $today = date('Ymd');

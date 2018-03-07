@@ -849,7 +849,7 @@ body {
 }
 
 #bot {
-  background-color: #424340;
+  background-color: #ecedeb;
   @media screen and (min-width:$desktop){
     background-image: url("/wp-content/themes/kma-slim/img/footer-texture.jpg");
   }
@@ -870,7 +870,7 @@ body {
 
     a {
       font-weight: $weight-bold;
-      color: #FFF;
+      color: #c0c2be;
       text-transform: uppercase;
     }
   }
@@ -936,6 +936,31 @@ body {
   @media screen and (min-width: $tablet) {
     padding: 3rem 0 3rem;
     text-align: left;
+  }
+
+  .footer-nav-menu {
+    padding: 1.5rem;
+    h4.title, h4.title a {
+      color: #c0c2be;
+      font-weight: $weight-bold;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    h4.title {
+      margin-bottom: .5rem !important;
+    }
+    .footer-submenu-item {
+      font-style: italic;
+      color: #005B85;
+      padding: .25rem 0;
+      display: block;
+      margin-top: .25rem;
+    }
+    .footer-submenu-item.phone {
+      font-weight: $weight-bold;
+      font-style: normal;
+      margin-bottom: 1rem;
+    }
   }
 }
 
