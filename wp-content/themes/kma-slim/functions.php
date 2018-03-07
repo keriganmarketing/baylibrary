@@ -37,7 +37,8 @@ $events->setupAdmin();
 $pageField = new PageField();
 $pageField->addField(get_option('page_on_front'), 'Get involved', [
     'Section Title' => 'text',
-    'Section Text'  => 'wysiwyg'
+    'Section Text'  => 'wysiwyg',
+    'Section Photo' => 'image'
 ]);
 
 add_action( 'after_setup_theme', function() {

@@ -9,7 +9,7 @@
                 </h1>
             </div>
         </div>
-        <div class="header-photo is-hidden-desktop">
+        <div class="header-photo is-hidden-tablet">
             <img src="<?= get_template_directory_uri() . '/img/header-image-mobile.jpg'; ?>" alt="<?= bloginfo(); ?>">
         </div>
     </div>

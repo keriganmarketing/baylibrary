@@ -15,5 +15,6 @@ include(locate_template('template-parts/sections/top.php'));
     <?php include(locate_template('template-parts/partials/next-event-small.php')); ?>
     <?php include(locate_template('template-parts/sections/home-about.php')); ?>
     <?php include(locate_template('template-parts/partials/next-event-large.php')); ?>
+    <?php include(locate_template('template-parts/sections/home-get-involved.php')); ?>
 </div>
 <?php include(locate_template('template-parts/sections/bot.php')); ?>
