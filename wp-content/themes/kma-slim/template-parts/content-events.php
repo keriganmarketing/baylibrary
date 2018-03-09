@@ -13,6 +13,7 @@ $headline = ($post->page_information_headline != '' ? $post->page_information_he
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
 
 $events = new Events();
+$eventsArray = $events->getUpcomingEvents();
 
 include(locate_template('template-parts/sections/top.php'));
 ?>
@@ -24,25 +25,26 @@ include(locate_template('template-parts/sections/top.php'));
                 <div class="columns is-multiline">
                     <div class="column is-12 is-8-desktop">
                         <div class="entry-content content">
-                            <div class="columns">
-                                <div class="column">
-                                    <p>photo</p>    
-                                </div>
-                                <div class="column columns is-multiline">
-                                    <div class="column">
-                                        <p>title</p>
-                                    </div>    
-                                    <div class="column">
-                                        <p>copy</p>
-                                    </div>
-                                    <div class="column">
-                                        <p>buttons</p>
-                                    </div>
-                                </div>
-                            </div>
                             <?php
-                                $eventsArray = $events->getUpcomingEvents();
-                                var_dump($eventsArray);
+                                foreach ($eventsArray as $key=>$var) { ?>
+                                    <div class="columns">
+                                        <div class="column"> 
+                                            <img src="<?php echo $eventsArray[$key]["photo"]; ?>">    
+                                        </div>
+                                        <div class="column">
+                                            <h2><?php echo $eventsArray[$key]["name"]; ?></h2>
+                                            <?php $trimmed = wp_trim_words( $eventsArray[$key]["content"], $num_words = 25, $more = '...' ); ?>
+                                            <p><?php echo $trimmed; ?></p>
+                                        </div>
+                                    </div>                                    
+                                <?php
+                                };
+                                ?>
+
+                            <?php
+                                echo('<pre>');
+                                    var_dump($eventsArray);
+                                echo('</pre>');
                             ?>
                             <p>Events here</p>
 
