@@ -27,13 +27,13 @@ include(locate_template('template-parts/sections/top.php'));
                         <div class="entry-content content">
                             <?php
                                 foreach ($eventsArray as $key=>$var) { ?>
+                                    <?php $trimmed = wp_trim_words( $eventsArray[$key]["content"], $num_words = 15, $more = '...' ); ?>
                                     <div class="columns">
                                         <div class="column"> 
                                             <img src="<?php echo $eventsArray[$key]["photo"]; ?>">    
                                         </div>
                                         <div class="column">
                                             <h2><?php echo $eventsArray[$key]["name"]; ?></h2>
-                                            <?php $trimmed = wp_trim_words( $eventsArray[$key]["content"], $num_words = 25, $more = '...' ); ?>
                                             <p><?php echo $trimmed; ?></p>
                                         </div>
                                     </div>                                    
