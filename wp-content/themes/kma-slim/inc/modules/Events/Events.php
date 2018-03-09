@@ -169,12 +169,11 @@ class Events
 
         foreach ($postList as $post) {
 
-
             $outputArray[] = [
                 'id'        => (isset($post->ID) ? $post->ID : null),
                 'name'      => (isset($post->post_title) ? $post->post_title : null),
                 'slug'      => (isset($post->post_name) ? $post->post_name : null),
-                'photo'     => (empty($post->event_details_photo_file) ? 'http://via.placeholder.com/350x150' : $post->event_details_photo_file),
+                'photo'     => (isset($post->event_details_photo_file) && !empty($post->event_details_photo_file) ? $post->event_details_photo_file : 'http://via.placeholder.com/350x350'),
                 'start'     => (isset($post->event_details_start) ? $post->event_details_start : null),
                 'end'       => (isset($post->event_details_end) ? $post->event_details_end : null),
                 'recurring' => (isset($post->event_details_recurring) ? $post->event_details_recurring : null),
