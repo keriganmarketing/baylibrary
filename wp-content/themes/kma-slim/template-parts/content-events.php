@@ -35,6 +35,11 @@ include(locate_template('template-parts/sections/top.php'));
                                         <div class="column">
                                             <h2><?php echo $eventsArray[$key]["name"]; ?></h2>
                                             <p><?php echo $trimmed; ?></p>
+                                            <div class="columns is-mobile">
+                                                <div class="column">FB</div>
+                                                <div class="column">button</div>
+                                                <div class="column">button</div>
+                                            </div>
                                         </div>
                                     </div>                                    
                                 <?php
