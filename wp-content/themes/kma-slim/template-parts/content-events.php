@@ -47,13 +47,12 @@ include(locate_template('template-parts/sections/top.php'));
                                 echo('</pre>');
                             ?>
                             <p>Events here</p>
-
                         </div>
                     </div>
                     <div class="column is-12 is-4-desktop">
                         <div class="entry-content content has-sidebar">
-                        </div>
                             <p>Sidebar here</p>
+                        </div>
                     </div>
                 </div>
         </section>
