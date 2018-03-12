@@ -81,7 +81,7 @@ include(locate_template('template-parts/sections/top.php'));
                         </div>
                     </div>
                     <div class="column is-12 is-3-desktop">
-                        <div class="entry-content content has-sidebar">
+                        <div class="entry-content content sidebar">
                             <?php include(locate_template('template-parts/sections/sidebar.php')); ?>
                         </div>
                     </div>

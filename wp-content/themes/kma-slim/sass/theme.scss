@@ -848,11 +848,26 @@ body {
       margin-bottom: .5rem;
       line-height: $content-heading-line-height;
     }
-
-    p, a {
-      color: #424340;
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bolder;
+      text-transform: uppercase;
+      color: #009AB4;
     }
-    a { font-weight: bold; }
+
+    p {
+      color: #999999;
+      line-height: 1.5rem;
+    }
+    a { 
+      width:85%;
+      color: #F7941D;
+      font-weight: bold;
+      margin: .9rem 0rem;
+      -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.4);
+      -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.4);
+      box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.4);
+    }
   }
 
 }

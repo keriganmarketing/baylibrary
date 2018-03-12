@@ -11,6 +11,7 @@ use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Helpers\PageField;
 use Includes\Modules\Leads\SimpleContact;
+use Includes\Modules\Leads\SimpleRSVP;
 use Includes\Modules\Social\SocialSettingsPage;
 
 require('vendor/autoload.php');
@@ -34,6 +35,10 @@ $contact->setupShortcode();
 
 $events = new Events();
 $events->setupAdmin();
+
+$rsvp = new SimpleRSVP();
+$rsvp->setupAdmin();
+$rsvp->setupShortcode();
 
 $pageField = new PageField();
 $pageField->addField(get_option('page_on_front'), 'Get involved', [
