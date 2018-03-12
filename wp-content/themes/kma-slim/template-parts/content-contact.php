@@ -26,7 +26,7 @@ include(locate_template('template-parts/sections/top.php'));
                     </div>
                     <div class="column is-12 is-8-desktop">
                         <div class="entry-content content has-sidebar">
-                            <?php echo do_shortcode('[contact_form]'); ?>
+                            <?php echo do_shortcode('[rsvp_form]'); ?>
                         </div>
                     </div>
                 </div>

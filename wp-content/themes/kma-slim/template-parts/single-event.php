@@ -31,12 +31,8 @@ get_header();
                             echo '<p>', $event["content"],'</p>';
                         ?>
                         <?php if($event['has_rsvp']){ ?>
-                            <div class="column is-narrow">
-                                <a class="button is-rounded is-primary"
-                                   href="<?= $event['link']; ?>#rsvp">RSVP</a>
-                            </div>
                         <?php } ?>
-                        
+                        <?php echo do_shortcode('[rsvp_form]'); ?>
                     </div>
                     <div class="column is-12 is-3-desktop">
                         <div class="entry-content content sidebar">
