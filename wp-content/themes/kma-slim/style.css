@@ -13135,6 +13135,10 @@ body {
   }
 }
 
+#mid .home-about .photo img {
+  width: 100%;
+}
+
 #mid .home-about .content {
   padding: 2rem;
   display: -ms-flexbox;
@@ -13323,6 +13327,149 @@ body {
   border: 2px solid #F7941D;
 }
 
+@media screen and (min-width: 769px) {
+  #mid .get-involved {
+    height: 30rem;
+  }
+
+  #mid .get-involved .columns.is-gapless {
+    height: 100%;
+    -ms-flex-direction: row-reverse;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        flex-direction: row-reverse;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #mid .get-involved {
+    height: 36rem;
+  }
+}
+
+#mid .get-involved .get-involved-photo {
+  overflow: hidden;
+  height: 25rem;
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (min-width: 769px) {
+  #mid .get-involved .get-involved-photo {
+    height: 30rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #mid .get-involved .get-involved-photo {
+    height: 100%;
+  }
+}
+
+#mid .get-involved .get-involved-details {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00cada+0,009ab4+100 */
+  background: #00cada;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#00cada), to(#009ab4));
+  background: linear-gradient(to right, #00cada 0%, #009ab4 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cada', endColorstr='#009ab4',GradientType=1 );
+  /* IE6-9 */
+  height: auto;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+  -ms-flex-pack: start;
+      -webkit-box-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      -webkit-box-align: center;
+      align-items: center;
+}
+
+@media screen and (min-width: 769px) {
+  #mid .get-involved .get-involved-details {
+    height: 30rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #mid .get-involved .get-involved-details {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  #mid .get-involved .get-involved-details {
+    -ms-flex-align: end;
+        -webkit-box-align: end;
+        align-items: flex-end;
+  }
+}
+
+#mid .get-involved .get-involved-details .detail-container {
+  padding: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  #mid .get-involved .get-involved-details .detail-container {
+    max-width: 585px;
+    padding: 6rem;
+  }
+}
+
+#mid .get-involved .get-involved-details .detail-container .title {
+  font-weight: 700;
+}
+
+#mid .get-involved .get-involved-details .detail-container p,
+#mid .get-involved .get-involved-details .detail-container h1,
+#mid .get-involved .get-involved-details .detail-container h2,
+#mid .get-involved .get-involved-details .detail-container h3,
+#mid .get-involved .get-involved-details .detail-container td {
+  color: white;
+}
+
+#mid .get-involved .get-involved-details .detail-container p {
+  margin-bottom: 1.5rem;
+}
+
+#mid .get-involved .get-involved-details .detail-container .column {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      -webkit-box-align: center;
+      align-items: center;
+  text-align: center;
+}
+
+#mid .get-involved .get-involved-details .detail-container .button {
+  background-color: #FFF !important;
+  height: 3rem !important;
+  font-size: .9em;
+  font-weight: 700;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  color: #F7941D;
+  border: 2px solid #F7941D;
+  width: 100%;
+  text-align: center;
+  max-width: 200px;
+  margin: 0 auto;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
 #mid .section {
   clear: both;
   overflow: hidden;
@@ -13392,7 +13539,7 @@ body {
 }
 
 #bot {
-  background-color: #424340;
+  background-color: #ecedeb;
 }
 
 @media screen and (min-width: 1024px) {
@@ -13420,7 +13567,7 @@ body {
 
 #bot .footer-navigation-menu a {
   font-weight: 700;
-  color: #FFF;
+  color: #c0c2be;
   text-transform: uppercase;
 }
 
@@ -13502,6 +13649,36 @@ body {
     padding: 3rem 0 3rem;
     text-align: left;
   }
+}
+
+#bot .footer-nav-menu {
+  padding: 1.5rem;
+}
+
+#bot .footer-nav-menu h4.title,
+#bot .footer-nav-menu h4.title a {
+  color: #c0c2be;
+  font-weight: 700;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#bot .footer-nav-menu h4.title {
+  margin-bottom: .5rem !important;
+}
+
+#bot .footer-nav-menu .footer-submenu-item {
+  font-style: italic;
+  color: #005B85;
+  padding: .25rem 0;
+  display: block;
+  margin-top: .25rem;
+}
+
+#bot .footer-nav-menu .footer-submenu-item.phone {
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 1rem;
 }
 
 #bot-bot {
