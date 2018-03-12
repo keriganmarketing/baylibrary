@@ -169,12 +169,11 @@ class Events
 
         foreach ($postList as $post) {
 
-
             $outputArray[] = [
                 'id'        => (isset($post->ID) ? $post->ID : null),
                 'name'      => (isset($post->post_title) ? $post->post_title : null),
                 'slug'      => (isset($post->post_name) ? $post->post_name : null),
-                'photo'     => (isset($post->event_details_photo_file) ? $post->event_details_photo_file : null),
+                'photo'     => (isset($post->event_details_photo_file) && !empty($post->event_details_photo_file) ? $post->event_details_photo_file : 'http://via.placeholder.com/350x350'),
                 'start'     => (isset($post->event_details_start) ? $post->event_details_start : null),
                 'end'       => (isset($post->event_details_end) ? $post->event_details_end : null),
                 'recurring' => (isset($post->event_details_recurring) ? $post->event_details_recurring : null),
@@ -182,7 +181,7 @@ class Events
                 'location'  => (isset($post->event_details_location) ? $post->event_details_location : null),
                 'details'   => (isset($post->event_details_show_details) ? $post->event_details_show_details : null),
                 'featured'  => (isset($post->event_details_feature_on_home_page) ? $post->event_details_feature_on_home_page : null),
-                'content'   => (isset($post->event_description_html) ? $post->event_description_html : null),
+                'content'   => (isset($post->event_description_html) && !empty($post->event_description_html) ? $post->event_description_html : 'default copy'),
                 'link'      => get_permalink($post->ID),
             ];
 
