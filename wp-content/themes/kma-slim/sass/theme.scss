@@ -476,8 +476,8 @@ body {
         h1 {
           span {
             position: absolute;
-            line-height: .75em;
             font-weight: $weight-bold;
+            line-height: .75em;
             @media screen and (min-width: $tablet) {
               font-size: 1.7em;
             }
@@ -586,6 +586,12 @@ body {
 
       p, h1, h2, h3 {
         color: #FFF;
+      }
+
+      table {
+        td {
+          border:none;
+        }
       }
 
       .title {
@@ -784,6 +790,19 @@ body {
           justify-self: center;
         }
       }
+    }
+  }
+
+  .content {
+    table {
+      tr:hover { background-color: transparent; }
+      td {
+        border: none !important;
+      }
+    }
+
+    hr {
+      background-color: #f6e379;
     }
   }
 

@@ -26,6 +26,7 @@ $layouts = new Layouts();
 $layouts->addPageHeadlines();
 $layouts->createSidebarSelector();
 $layouts->addSidebar('Featured Image Sidebar');
+$layouts->addSidebar('Get Involved Sidebar');
 
 $contact = new SimpleContact();
 $contact->setupAdmin();
