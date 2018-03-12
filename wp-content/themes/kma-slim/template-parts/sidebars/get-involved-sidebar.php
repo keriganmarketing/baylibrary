@@ -13,7 +13,7 @@ href="#"
 <a class="button is-rounded is-primary is-outlined"
 href="#"
 >
-    Volunteer an Event
+    Volunteer
 </a>
 <a class="button is-rounded is-primary is-outlined"
 href="/donate-support/make-a-donation/"
