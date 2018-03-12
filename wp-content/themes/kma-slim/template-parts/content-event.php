@@ -30,19 +30,13 @@ get_header();
                         <?php
                             echo '<p>', $event["content"],'</p>';
                         ?>
-                        <?php if($event['has_rsvp']){ ?>
-                            <div class="column is-narrow">
-                                <a class="button is-rounded is-primary"
-                                   href="<?= $event['link']; ?>#rsvp">RSVP</a>
-                            </div>
-                        <?php } ?>
-                        
                     </div>
                     <div class="column is-12 is-3-desktop">
                         <div class="entry-content content sidebar">
                             <?php include(locate_template('template-parts/sections/sidebar.php')); ?>
                         </div>
                     </div>
+
                     <?php
                     echo '<pre>', print_r($event), '</pre>';
                     ?>
