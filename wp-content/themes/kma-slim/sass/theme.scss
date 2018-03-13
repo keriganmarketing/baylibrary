@@ -42,7 +42,6 @@ body {
       font-size: .8em;
       margin: 1.5rem 0 .5rem;
     }
-
   }
   #MobileNavMenu.is-active {
     width: 100%;
@@ -434,6 +433,10 @@ body {
     padding-top: 117px;
   }
 
+  .button {
+    box-shadow: 0 0 4px rgba(0,0,0,.25);
+  }
+
   .home-header {
     background-image: url("/wp-content/themes/kma-slim/img/mobile/header-image.png");
     background-size: cover;
@@ -536,6 +539,7 @@ body {
   .home-about {
     overflow: hidden;
     background-color: #000;
+    line-height: 2em;
 
     @media screen and (min-width: $desktop) {
       background: url("/wp-content/themes/kma-slim/img/martin-theater.jpg") center right no-repeat #000;
@@ -816,6 +820,10 @@ body {
     padding:0;
   }
 
+  .section.support {
+    padding:2rem 0;
+  }
+
   .section.pad {
     padding: 2.5rem 1rem;
   }
@@ -831,6 +839,14 @@ body {
     @media screen and (min-width: $desktop){
       padding: 3rem 0;
     }
+
+    h2, h2 a {
+      color: $tertiary;
+    }
+
+    img {
+      margin-bottom: 1rem;
+    }
   }
 
   .entry-content.has-sidebar {
@@ -840,7 +856,7 @@ body {
   }
 
   .sidebar-section {
-    margin: 2rem 0;
+    margin: 0;
     line-height: $body-line-height;
 
     .subtitle {
@@ -848,6 +864,7 @@ body {
       margin-bottom: .5rem;
       line-height: $content-heading-line-height;
     }
+
     h3 {
       font-size: 1.5rem;
       font-weight: bolder;
@@ -856,30 +873,50 @@ body {
     }
 
     p {
-      color: #999999;
-      line-height: 1.5rem;
+      color: $grey;
+      margin: .25rem 0 1rem;
     }
-    a { 
+    a {
       width:85%;
-      color: #F7941D;
       font-weight: bold;
-      margin: .9rem 0rem;
-      -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.4);
-      -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.4);
-      box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.4);
+      margin: .25rem 0 1rem;
     }
   }
 
+}
+
+.donate-form {
+  form {
+    img {
+      display: block;
+      line-height: 0;
+      margin-bottom: 0 !important;
+    }
+  }
 }
 
 .search-bar {
   h4 { color: $white; }
   background-color: $primary;
 
-  .button {
-    color: $info;
-    border: 2px solid $info;
+  .input {
+    border-radius: .25rem;
   }
+
+  .button {
+    color: $primary;
+    font-weight: $weight-bold;
+    background-color: $white !important;
+    border: 2px solid $primary;
+    height: 3rem;
+    width: 3rem;
+    box-shadow: 0 0 5px rgba(0,0,0,.25);
+  }
+  .button:hover {
+    color: $white !important;
+    background-color: $primary !important;
+  }
+
 }
 
 #bot {

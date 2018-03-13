@@ -1,23 +1,24 @@
 <h3>Get Involved</h3>
-<p>The Bay County Public Library Foundation exists because of the support of people like you. If your interested in volunteering or contributing, click below for  more information.</p>
+<p>The Bay County Public Library Foundation exists because of the support of people like you. If your interested in
+    volunteering or contributing, click below for more information.</p>
 <a class="button is-rounded is-primary is-outlined"
-href=""
+   href="/events/"
 >
     Attend an Event
 </a>
 <a class="button is-rounded is-primary is-outlined"
-href="#"
+   href="/events/"
 >
     Sponsor an Event
 </a>
 <a class="button is-rounded is-primary is-outlined"
-href="#"
+   href="/donate-support/support-the-public-library/"
 >
     Volunteer
 </a>
 <a class="button is-rounded is-primary is-outlined"
-href="/donate-support/make-a-donation/"
+   href="/donate/"
 >
     Make a Donation
 </a>
-    </div>
+</div>

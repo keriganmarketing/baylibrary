@@ -31,13 +31,15 @@ include(locate_template('template-parts/sections/top.php'));
                                 <?php $trimmed = wp_trim_words($event["content"], $num_words = 15,
                                     $more = '... <a href="' . $event['link'] . '">read more.</a>'); ?>
                                 <div class="columns">
+                                    <?php if($event['photo']!=''){ ?>
                                     <div class="column">
                                         <a href="<?= $event['link']; ?>">
                                             <img src="<?= $event["photo"]; ?>">
                                         </a>
                                     </div>
+                                    <?php } ?>
                                     <div class="column">
-                                        <h2 class="title is-secondary is-bold"><a
+                                        <h2 class="title is-tertiary is-bold"><a
                                                     href="<?= $event['link']; ?>"><?= $event["name"]; ?></a></h2>
                                         <p><?= $trimmed; ?></p>
                                         <table>
@@ -47,7 +49,7 @@ include(locate_template('template-parts/sections/top.php'));
                                         <div class="columns is-mobile">
                                             <?php if($event['facebook_link']){ ?>
                                             <div class="column is-narrow">
-                                                <a href="#" target="_blank" class="facebook">
+                                                <a href="<?= $event['facebook_link']; ?>" target="_blank" class="facebook">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.02 34.02" style="height: 2.3rem;">
                                                         <path fill="#43609C"
                                                               d="M17,34A17,17,0,1,0,0,17,17,17,0,0,0,17,34"
@@ -62,7 +64,7 @@ include(locate_template('template-parts/sections/top.php'));
                                             <?php if($event['tickets_link']){ ?>
                                             <div class="column is-narrow">
                                                 <a class="button is-rounded is-primary"
-                                                   href="<?= $event['tickets']; ?>">Purchase Tickets</a>
+                                                   href="<?= $event['tickets_link']; ?>">Purchase Tickets</a>
                                             </div>
                                             <?php } ?>
                                             <?php if($event['has_rsvp']){ ?>
@@ -81,9 +83,7 @@ include(locate_template('template-parts/sections/top.php'));
                         </div>
                     </div>
                     <div class="column is-12 is-3-desktop">
-                        <div class="entry-content content sidebar">
-                            <?php include(locate_template('template-parts/sections/sidebar.php')); ?>
-                        </div>
+                        <?php include(locate_template('template-parts/sections/sidebar.php')); ?>
                     </div>
                 </div>
         </section>

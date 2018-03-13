@@ -6,7 +6,7 @@ if(!isset($sidebars) ) {
 if(count($sidebars) > 0) {
     foreach ($sidebars as $sidebar) { ?>
         <div class="column is-6-tablet is-12-desktop">
-            <div class="sidebar-section <?= $sidebar; ?>">
+            <div class="entry-content sidebar-section <?= $sidebar; ?>">
                 <?php include(locate_template('template-parts/sidebars/' . $sidebar . '.php')); ?>
             </div>
         </div>

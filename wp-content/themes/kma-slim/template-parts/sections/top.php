@@ -60,7 +60,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
                                 </div>
                             </div>
                             <div class="donate-flag is-hidden-touch">
-                                <a href="#">
+                                <a href="/donate/">
                                     <img src="<?php echo get_template_directory_uri() . '/img/donate-bookmark.png'; ?>" alt="Show your support, donate now." />
                                 </a>
                             </div>
@@ -92,7 +92,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
                             'walker'         => new BulmaNavwalker()
                         ]); ?>
                         <div class="navbar-end is-hidden-desktop">
-                            <a class="dontate-button button is-primary is-rounded" href="#">Donate Now</a>
+                            <a class="dontate-button button is-primary is-rounded" href="/donate/">Donate Now</a>
                         </div>
                     </nav>
                 </div>
