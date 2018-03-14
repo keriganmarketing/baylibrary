@@ -390,16 +390,18 @@ body {
 }
 
 .support-header {
-  h1 {
-    color: $white;
-    font-weight: $weight-normal;
-  }
-  background-color: $primary;
-  background-image: url("/wp-content/themes/kma-slim/img/hex-pattern.png");
-
+  background: url("/wp-content/themes/kma-slim/img/books.jpg") 0 20% repeat-x;
+  background-size: auto 150%;
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 180px;
+}
+
+.support-title {
+  padding: 4rem 0 0;
+  h1 {
+    color: $tertiary;
+  }
 }
 
 .breadcrumbs {
@@ -416,9 +418,6 @@ body {
 @media screen and (min-width: $desktop) {
   .home #mid {
     padding-top: 138px;
-  }
-  .sticky-header-pad.support {
-    height: 75px;
   }
 }
 
