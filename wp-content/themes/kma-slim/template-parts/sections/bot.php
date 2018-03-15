@@ -14,7 +14,7 @@ $eventsArray = $events->getUpcomingEvents();
         <div id="bot">
             <div class="container">
                 <div class="columns is-multiline">
-                    <div class="column is-narrow footer-nav-menu">
+                    <div class="column is-one-fifth footer-nav-menu">
                         <h4 class="title"><a href="/about-us/">About Us</a></h4>
                         <ul>
                             <?php foreach (getPageChildren('About Us') as $child) { ?>
@@ -52,7 +52,7 @@ $eventsArray = $events->getUpcomingEvents();
                     </div>
                     <div class="column is-narrow footer-nav-menu">
                         <h4 class="title"><a href="/contact/">Contact</a></h4>
-                        <p><a href="tel:#" class="footer-submenu-item">XXX-XXX-XXXX</a></p>
+                        <p><a href="tel:#" class="footer-submenu-item phone">XXX-XXX-XXXX</a></p>
                         <div class="social">
                             <?php
                             $socialLinks = new SocialSettingsPage();
@@ -72,6 +72,7 @@ $eventsArray = $events->getUpcomingEvents();
             <?php include(locate_template('template-parts/partials/copyright.php')); ?>
         </div>
     </div><!-- .sticky-footer -->
+    <modal><?= (isset($modalContent) && $modalContent != '' ? $modalContent : ''); ?></modal>
     </div><!-- .site-wrapper -->
-    </div><!-- .app -->
+</div><!-- .app -->
 <?php wp_footer(); ?>

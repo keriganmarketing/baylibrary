@@ -17,7 +17,7 @@ if(count($eventsArray) > 0){
                 <h4 class="title font-signpainter is-1">Our next event:</h4>
             </div>
             <div class="event-details">
-                <h4 class="title is-4"><strong><?= $nextEvent['name']; ?></strong></h4>
+                <h4 class="title is-4 is-semibold"><?= $nextEvent['name']; ?></h4>
                 <p class="subtitle"><?= date('l, F jS', $date); ?>, <?= $nextEvent['time']; ?> &nbsp; <a href="<?= $nextEvent['link']; ?>" >RSVP ONLINE</a></p>
             </div>
         </div>

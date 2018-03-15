@@ -43,7 +43,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
                             </a>
                         </div>
                         <div class="navbar-end mini-nav is-hidden-mobile">
-                            <div class="navbar-item">
+                            <div class="navbar-item social-label">
                                 Connect:
                             </div>
                             <div class="navbar-item social-buttons">
