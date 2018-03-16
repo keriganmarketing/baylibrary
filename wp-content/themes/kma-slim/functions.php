@@ -7,11 +7,12 @@
  */
 
 use Includes\Modules\Events\Events;
+use Includes\Modules\Photos\Photos;
 use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
+use Includes\Modules\Leads\SimpleRSVP;
 use Includes\Modules\Helpers\PageField;
 use Includes\Modules\Leads\SimpleContact;
-use Includes\Modules\Leads\SimpleRSVP;
 use Includes\Modules\Social\SocialSettingsPage;
 
 require('vendor/autoload.php');
@@ -32,6 +33,9 @@ $layouts->addSidebar('Get Involved Sidebar');
 $contact = new SimpleContact();
 $contact->setupAdmin();
 $contact->setupShortcode();
+
+$photos = new Photos();
+$photos->setupAdmin();
 
 $events = new Events();
 $events->setupAdmin();
