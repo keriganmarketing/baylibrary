@@ -41,6 +41,7 @@
     .modal-content.large {
         width: 960px;
         max-width: 100%;
+        overflow: hidden;
     }
 
     .photo-holder {
