@@ -1,9 +1,32 @@
+
+figure.is-3by2.hide-overflow,
+figure.is-4by3.hide-overflow {
+  overflow: hidden;
+  img {
+    position: absolute;
+    height: auto;
+  }
+}
+
 .font-black {
   font-weight: $weight-black;
 }
 
 .is-justified {
   justify-content: center;
+}
+
+.is-justify-left {
+  justify-content: flex-start;
+}
+
+.columns.is-1 {
+  padding-left: .75rem;
+  padding-right: .75rem;
+  .column {
+    padding-left: .25rem;
+    padding-right: .25rem;
+  }
 }
 
 .is-rounded {
@@ -131,15 +154,19 @@
 .title.is-info {
   color: $info;
 }
+
 .title.is-primary {
   color: $primary;
 }
+
 .title.is-secondary {
   color: $secondary
 }
+
 .title.is-tertiary {
   color: $tertiary
 }
+
 .is-white {
   color: $white;
 }

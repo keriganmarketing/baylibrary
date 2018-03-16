@@ -46,7 +46,7 @@ include(locate_template('template-parts/sections/top.php'));
                                             <tr><td class="label">When:</td><td><?= $event['recurr_readable']; ?> at <?= $event['time']; ?></td></tr>
                                             <tr><td class="label">Where:</td><td><?= nl2br($event['location']); ?></td></tr>
                                         </table>
-                                        <div class="columns is-mobile">
+                                        <div class="columns is-mobile is-justify-start is-1">
                                             <?php if($event['facebook_link']){ ?>
                                             <div class="column is-narrow">
                                                 <a href="<?= $event['facebook_link']; ?>" target="_blank" class="facebook">
