@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <h3>Or donate a custom amount:</h3>
+    <h3>Or donate a specific amount:</h3>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
         <div class="columns is-aligned is-mobile">
