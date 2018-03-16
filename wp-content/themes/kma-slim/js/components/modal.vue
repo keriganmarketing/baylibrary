@@ -3,7 +3,7 @@
         <div class="modal-background" @click="toggleModal"></div>
         <div class="modal-content large">
             <slot></slot>
-            <div v-html="modalContent"></div>
+            <div class="photo-holder" v-html="modalContent"></div>
         </div>
         <button class="modal-close is-large" @click="toggleModal"></button>
     </div>
@@ -43,7 +43,12 @@
         max-width: 100%;
     }
 
-    .modal-content.large img {
+    .photo-holder {
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .photo-holder img {
         max-height: 90vh;
         max-width: 90vh;
     }
