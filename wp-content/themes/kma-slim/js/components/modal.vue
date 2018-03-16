@@ -42,4 +42,9 @@
         width: 960px;
         max-width: 100%;
     }
+
+    .modal-content.large img {
+        max-height: 90vh;
+        max-width: 90vh;
+    }
 </style>
