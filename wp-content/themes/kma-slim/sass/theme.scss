@@ -42,7 +42,6 @@ body {
       font-size: .8em;
       margin: 1.5rem 0 .5rem;
     }
-
   }
   #MobileNavMenu.is-active {
     width: 100%;
@@ -434,6 +433,10 @@ body {
     padding-top: 117px;
   }
 
+  .button {
+    box-shadow: 0 0 4px rgba(0,0,0,.25);
+  }
+
   .home-header {
     background-image: url("/wp-content/themes/kma-slim/img/mobile/header-image.png");
     background-size: cover;
@@ -476,8 +479,8 @@ body {
         h1 {
           span {
             position: absolute;
-            line-height: .75em;
             font-weight: $weight-bold;
+            line-height: .75em;
             @media screen and (min-width: $tablet) {
               font-size: 1.7em;
             }
@@ -536,6 +539,7 @@ body {
   .home-about {
     overflow: hidden;
     background-color: #000;
+    line-height: 2em;
 
     @media screen and (min-width: $desktop) {
       background: url("/wp-content/themes/kma-slim/img/martin-theater.jpg") center right no-repeat #000;
@@ -586,6 +590,12 @@ body {
 
       p, h1, h2, h3 {
         color: #FFF;
+      }
+
+      table {
+        td {
+          border:none;
+        }
       }
 
       .title {
@@ -787,6 +797,19 @@ body {
     }
   }
 
+  .content {
+    table {
+      tr:hover { background-color: transparent; }
+      td {
+        border: none !important;
+      }
+    }
+
+    hr {
+      background-color: #f6e379;
+    }
+  }
+
   //sections
   .section {
     clear: both;
@@ -795,6 +818,10 @@ body {
     z-index: 1;
     background-color: transparent;
     padding:0;
+  }
+
+  .section.support {
+    padding:2rem 0;
   }
 
   .section.pad {
@@ -812,6 +839,14 @@ body {
     @media screen and (min-width: $desktop){
       padding: 3rem 0;
     }
+
+    h2, h2 a {
+      color: $tertiary;
+    }
+
+    img {
+      margin-bottom: 1rem;
+    }
   }
 
   .entry-content.has-sidebar {
@@ -821,7 +856,7 @@ body {
   }
 
   .sidebar-section {
-    margin: 2rem 0;
+    margin: 0;
     line-height: $body-line-height;
 
     .subtitle {
@@ -830,22 +865,58 @@ body {
       line-height: $content-heading-line-height;
     }
 
-    p, a {
-      color: #424340;
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bolder;
+      text-transform: uppercase;
+      color: #009AB4;
     }
-    a { font-weight: bold; }
+
+    p {
+      color: $grey;
+      margin: .25rem 0 1rem;
+    }
+    a {
+      width:85%;
+      font-weight: bold;
+      margin: .25rem 0 1rem;
+    }
   }
 
+}
+
+.donate-form {
+  form {
+    img {
+      display: block;
+      line-height: 0;
+      margin-bottom: 0 !important;
+    }
+  }
 }
 
 .search-bar {
   h4 { color: $white; }
   background-color: $primary;
 
-  .button {
-    color: $info;
-    border: 2px solid $info;
+  .input {
+    border-radius: .25rem;
   }
+
+  .button {
+    color: $primary;
+    font-weight: $weight-bold;
+    background-color: $white !important;
+    border: 2px solid $primary;
+    height: 3rem;
+    width: 3rem;
+    box-shadow: 0 0 5px rgba(0,0,0,.25);
+  }
+  .button:hover {
+    color: $white !important;
+    background-color: $primary !important;
+  }
+
 }
 
 #bot {

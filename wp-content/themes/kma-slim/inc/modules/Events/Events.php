@@ -61,8 +61,9 @@ class Events
             'Time'                 => 'text',
             'Location'             => 'textarea',
             'Tickets Link'         => 'text',
+            'Facebook Event Link'  => 'text',
             'Feature on Home page' => 'boolean',
-
+            'Enable RSVP'          => 'boolean'
         ]);
 
         $slider->addMetaBox(
@@ -138,6 +139,43 @@ class Events
 
     }
 
+    public function getReadableDate($start = '', $end = '', $recurrDays = [])
+    {
+        $activeDays = [];
+        foreach ($recurrDays as $day => $value) {
+            if ($value == 'on') {
+                $activeDays[] = $day;
+            }
+        }
+
+        $dateString = '';
+        if (count($activeDays) > 0) {
+            $i = 1;
+            foreach ($activeDays as $day) {
+                $dateString .= ucfirst($day . ($day != 'weekends' && $day != 'weekdays' ? 's' : ''));
+                if ($i < count($activeDays)) {
+                    $dateString .= ($i == count($activeDays) - 1 ? ' and ' : ', ');
+                }
+                $i++;
+            }
+
+            if ($end != null && $start != $end) {
+                $dateString .= (date('Ymd', $start) > date('Ymd') ? ' from ' . date('M j',
+                            strtotime($start)) . ' to ' : ' through ') . date('M j', strtotime($end));
+            }
+        } else {
+
+            if ($end != null && $start != $end) {
+                $dateString .= (date('Ymd', $start) > date('Ymd') ? date('M j, Y',
+                            strtotime($start)) . ' to ' : ' through ') . date('M j, Y', strtotime($end));
+            } else {
+                $dateString .= date('M j, Y', strtotime($start));
+            }
+        }
+
+        return $dateString;
+    }
+
     public function getEvents($args, $category = '', $limit = -1)
     {
 
@@ -168,25 +206,42 @@ class Events
         $postList = get_posts($request);
 
         foreach ($postList as $post) {
-
+            $recurrDays = [
+                'monday'    => (isset($post->recurring_settings_monday) ? $post->recurring_settings_monday : null),
+                'tuesday'   => (isset($post->recurring_settings_tuesday) ? $post->recurring_settings_tuesday : null),
+                'wednesday' => (isset($post->recurring_settings_wednesday) ? $post->recurring_settings_wednesday : null),
+                'thursday'  => (isset($post->recurring_settings_thursday) ? $post->recurring_settings_thursday : null),
+                'friday'    => (isset($post->recurring_settings_friday) ? $post->recurring_settings_friday : null),
+                'saturday'  => (isset($post->recurring_settings_saturday) ? $post->recurring_settings_saturday : null),
+                'sunday'    => (isset($post->recurring_settings_sunday) ? $post->recurring_settings_sunday : null),
+                'weekends'  => (isset($post->recurring_settings_weekends) ? $post->recurring_settings_weekends : null),
+                'weekdays'  => (isset($post->recurring_settings_weekdays) ? $post->recurring_settings_weekdays : null),
+            ];
+            $start      = (isset($post->event_details_start) ? $post->event_details_start : null);
+            $end        = (isset($post->event_details_end) ? $post->event_details_end : null);
 
             $outputArray[] = [
-                'id'        => (isset($post->ID) ? $post->ID : null),
-                'name'      => (isset($post->post_title) ? $post->post_title : null),
-                'slug'      => (isset($post->post_name) ? $post->post_name : null),
-                'photo'     => (isset($post->event_details_photo_file) ? $post->event_details_photo_file : null),
-                'start'     => (isset($post->event_details_start) ? $post->event_details_start : null),
-                'end'       => (isset($post->event_details_end) ? $post->event_details_end : null),
-                'recurring' => (isset($post->event_details_recurring) ? $post->event_details_recurring : null),
-                'time'      => (isset($post->event_details_time) ? $post->event_details_time : null),
-                'location'  => (isset($post->event_details_location) ? $post->event_details_location : null),
-                'details'   => (isset($post->event_details_show_details) ? $post->event_details_show_details : null),
-                'featured'  => (isset($post->event_details_feature_on_home_page) ? $post->event_details_feature_on_home_page : null),
-                'content'   => (isset($post->event_description_html) ? $post->event_description_html : null),
-                'link'      => get_permalink($post->ID),
+                'id'              => (isset($post->ID) ? $post->ID : null),
+                'name'            => (isset($post->post_title) ? $post->post_title : null),
+                'slug'            => (isset($post->post_name) ? $post->post_name : null),
+                'photo'           => (isset($post->event_details_photo_file) ? $post->event_details_photo_file : null),
+                'start'           => $start,
+                'end'             => $end,
+                'recurring'       => (isset($post->recurring_settings_recurring) ? $post->recurring_settings_recurring : null),
+                'recurr_on'       => $recurrDays,
+                'recurr_readable' => $this->getReadableDate($start, $end, $recurrDays),
+                'time'            => (isset($post->event_details_time) ? $post->event_details_time : null),
+                'location'        => (isset($post->event_details_location) ? $post->event_details_location : null),
+                'featured'        => (isset($post->event_details_feature_on_home_page) ? $post->event_details_feature_on_home_page : null),
+                'tickets_link'    => (isset($post->event_details_tickets_link) ? $post->event_details_tickets_link : null),
+                'facebook_link'   => (isset($post->event_details_facebook_event_link) ? $post->event_details_facebook_event_link : null),
+                'has_rsvp'        => (isset($post->event_details_enable_rsvp) ? $post->event_details_enable_rsvp : null),
+                'content'         => (isset($post->event_description_html) ? $post->event_description_html : null),
+                'link'            => get_permalink($post->ID),
             ];
-
         }
+
+        //echo '<pre>', print_r($outputArray), '<br>', '</pre>';
 
         return $outputArray;
 
@@ -338,13 +393,13 @@ class Events
     {
         $event = $this->getEvents([
             'include' => $postId
-        ], '', 1)[0];
+        ], '', 1);
 
-        $event['formatted_date'] = $this->getDates($event);
+        //$event['formatted_date'] = $this->getDates($event);
 
         //echo '<pre>',print_r($event),'</pre>';
 
-        return $event;
+        return $event[0];
     }
 
     public function getDates($event)

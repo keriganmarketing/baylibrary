@@ -1,5 +1,6 @@
 <?php
 
+use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Layouts\Layouts;
 
 /**
@@ -22,6 +23,17 @@ include(locate_template('template-parts/sections/top.php'));
                     <div class="column is-12 is-4-desktop">
                         <div class="entry-content content">
                             <?php the_content(); ?>
+                            <div class="social">
+                                <?php
+                                $socialLinks = new SocialSettingsPage();
+                                $socialIcons = $socialLinks->getSocialLinks('svg', 'circle');
+                                if (is_array($socialIcons)) {
+                                    foreach ($socialIcons as $socialId => $socialLink) {
+                                        echo '<a class="' . $socialId . '" href="' . $socialLink[0] . '" target="_blank" >' . $socialLink[1] . '</a>';
+                                    }
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
                     <div class="column is-12 is-8-desktop">

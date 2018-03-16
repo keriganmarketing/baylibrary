@@ -9,7 +9,7 @@ use Includes\Modules\Layouts\Layouts;
  * @version 1.2
  */
 $headline = '404';
-$subhead = 'Page not found';
+$subhead = 'page not found';
 
 include(locate_template('template-parts/sections/top.php'));
 ?>
