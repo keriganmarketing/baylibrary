@@ -6,7 +6,7 @@ $eventsArray = $events->getHomePageEvents(1);
 
 //echo '<pre>',print_r($eventsArray),'</pre>';
 
-if(count($eventsArray) > 0){
+if(is_array($eventsArray) && count($eventsArray) > 0){
     $nextEvent = $eventsArray[0];
     $date = strtotime($nextEvent['start']);
 ?>
