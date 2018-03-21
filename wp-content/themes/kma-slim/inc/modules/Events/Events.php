@@ -275,7 +275,7 @@ class Events
 
     }
 
-    private function orderEvents($inputArray)
+    private function orderEvents($inputArray, $direction = 'ASC')
     {
 
         $sorter      = [];
@@ -285,7 +285,11 @@ class Events
         foreach ($inputArray as $key => $var) {
             $sorter[$key] = $var['start'];
         }
-        asort($sorter);
+        if($direction == 'ASC'){
+            asort($sorter);
+        }elseif($direction == 'DESC'){
+            arsort($sorter);
+        }
         foreach ($sorter as $key => $var) {
             $returnArray[$key] = $inputArray[$key];
         }
@@ -367,7 +371,7 @@ class Events
                     $outputArray[$key]['start'] = $this->advanceDate($var);
                 }
             }
-            $outputArray = $this->orderEvents($outputArray);
+            $outputArray = $this->orderEvents($outputArray,'ASC');
         }
 
         return $outputArray;
@@ -401,7 +405,7 @@ class Events
                     $outputArray[$key]['start'] = $this->advanceDate($var);
                 }
             }
-            $outputArray = $this->orderEvents($outputArray);
+            $outputArray = $this->orderEvents($outputArray,'DESC');
         }
 
         return $outputArray;
