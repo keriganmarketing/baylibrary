@@ -232,10 +232,10 @@ class Events
                 'recurr_readable' => $this->getReadableDate($start, $end, $recurrDays),
                 'time'            => (isset($post->event_details_time) ? $post->event_details_time : null),
                 'location'        => (isset($post->event_details_location) ? $post->event_details_location : null),
-                'featured'        => (isset($post->event_details_feature_on_home_page) ? $post->event_details_feature_on_home_page : null),
+                'featured'        => (isset($post->event_details_feature_on_home_page) && $post->event_details_feature_on_home_page != 'false' ? $post->event_details_feature_on_home_page : null),
                 'tickets_link'    => (isset($post->event_details_tickets_link) ? $post->event_details_tickets_link : null),
                 'facebook_link'   => (isset($post->event_details_facebook_event_link) ? $post->event_details_facebook_event_link : null),
-                'has_rsvp'        => (isset($post->event_details_enable_rsvp) ? $post->event_details_enable_rsvp : null),
+                'has_rsvp'        => (isset($post->event_details_enable_rsvp) && $post->event_details_enable_rsvp != 'false' ? $post->event_details_enable_rsvp : null),
                 'content'         => (isset($post->event_description_html) ? $post->event_description_html : null),
                 'link'            => get_permalink($post->ID),
             ];
@@ -412,13 +412,14 @@ class Events
     {
 
         $outputArray = $this->getUpcomingEvents([], '', -1);
-        foreach ($outputArray as $key => $var) {
-            if ($var['featured'] != 'on') {
-                unset($outputArray[$key]);
+        if(is_array($outputArray) && count($outputArray)>0) {
+            foreach ($outputArray as $key => $var) {
+                if ($var['featured'] != 'on') {
+                    unset($outputArray[$key]);
+                }
             }
+            $outputArray = array_slice($outputArray, 0, $limit, false);
         }
-
-        $outputArray = array_slice($outputArray, 0, $limit, false);
 
         return $outputArray;
 

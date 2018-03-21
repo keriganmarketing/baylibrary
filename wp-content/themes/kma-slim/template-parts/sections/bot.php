@@ -35,10 +35,10 @@ $eventsArray = $events->getUpcomingEvents();
                     <div class="column is-one-fifth footer-nav-menu">
                         <h4 class="title"><a href="/events/">Events</a></h4>
                         <ul>
-                            <?php foreach ($eventsArray as $event) { ?>
-                                <li><a href="<?= $event['link']; ?>"
-                                       class="footer-submenu-item"><?= $event['name']; ?></a></li>
-                            <?php } ?>
+                            <li><a href="/events/"
+                                       class="footer-submenu-item">Upcoming Events</a></li>
+                            <li><a href="/past-events/"
+                                   class="footer-submenu-item">Past Events</a></li>
                         </ul>
                     </div>
                     <div class="column is-narrow footer-nav-menu">

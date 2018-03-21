@@ -89,7 +89,7 @@ include(locate_template('template-parts/sections/top.php'));
                                     <?php
                                 }
                             }else{
-                                echo '<p>We do not have any upcoming events at this time.</p>';
+                                echo '<p>We do not have any upcoming events at this time. <a href="/past-events/" >View photos from our past events</a>.</p>';
                             }
                             ?>
                         </div>

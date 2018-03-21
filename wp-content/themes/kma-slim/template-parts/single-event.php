@@ -31,6 +31,7 @@ include(locate_template('template-parts/sections/top.php'));
 
                         <div class="column is-12 is-9-desktop">
                             <div class="entry-content content has-sidebar">
+                                <?php if($event['has_rsvp']!='' || $event['facebook_link'] != '' || $event['tickets_link'] != ''){ ?>
                                 <div class="columns is-mobile is-1">
                                     <?php if ($event['facebook_link'] != '') { ?>
                                         <div class="column is-narrow">
@@ -67,7 +68,7 @@ include(locate_template('template-parts/sections/top.php'));
                                     <?php } ?>
                                     <hr>
                                 </div>
-
+                                <?php } ?>
                                 <?php echo apply_filters('the_content', $event["content"]); ?>
 
                                 <?php if ($event['has_rsvp'] != '') { ?>
