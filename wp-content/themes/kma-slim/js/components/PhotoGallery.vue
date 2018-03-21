@@ -25,6 +25,9 @@
         methods: {
             toggleGallery( photo ){
                 this.$parent.$emit('toggleModal','photoModal','<img id="' + photo.slug + '" src="' + photo.url + '" alt="' + photo.name + '" >');
+            },
+            nextPhoto( photo ){
+                console.log( photo )
             }
         }
     }

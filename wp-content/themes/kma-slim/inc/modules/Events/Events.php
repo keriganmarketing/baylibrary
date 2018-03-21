@@ -373,6 +373,39 @@ class Events
 
     }
 
+    public function getPastEvents($args = [], $category = '', $limit = -1)
+    {
+
+        $today = date('Ymd');
+
+        $metaQuery['meta_query'] = [
+            'relation' => 'AND',
+            [
+                'key'     => 'event_details_end',
+                'value'   => $today,
+                'compare' => '<'
+            ],
+            [
+                'key'     => 'event_details_recurring',
+                'value'   => 'none',
+                'compare' => '=='
+            ]
+        ];
+
+        $metaQuery   = array_merge($metaQuery, $args);
+        $outputArray = $this->getEvents($metaQuery, $category, $limit);
+        foreach ($outputArray as $key => $var) {
+            if ($var['start'] < $today + 1) {
+                $outputArray[$key]['start'] = $this->advanceDate($var);
+            }
+        }
+
+        $outputArray = $this->orderEvents($outputArray);
+
+        return $outputArray;
+
+    }
+
     public function getHomePageEvents($limit = -1)
     {
 
