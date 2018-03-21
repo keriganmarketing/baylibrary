@@ -52,7 +52,7 @@ $eventsArray = $events->getUpcomingEvents();
                     </div>
                     <div class="column is-narrow footer-nav-menu">
                         <h4 class="title"><a href="/contact/">Contact</a></h4>
-                        <p><a href="tel:#" class="footer-submenu-item phone">XXX-XXX-XXXX</a></p>
+                        <p><a href="mailto:info@bcplfoundation.org" class="footer-submenu-item phone">info@bcplfoundation.org</a></p>
                         <div class="social">
                             <?php
                             $socialLinks = new SocialSettingsPage();

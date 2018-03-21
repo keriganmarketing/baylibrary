@@ -788,7 +788,7 @@ body {
 
         @media screen and (min-width: $desktop){
           max-width: 585px;
-          padding: 6rem;
+          padding: 6rem 4.5rem;
         }
 
         .title {
@@ -813,7 +813,7 @@ body {
         .button {
           background-color: #FFF !important;
           height: 2.7rem !important;
-          font-size: .9em;
+          font-size: .8em;
           font-weight: $weight-bold;
           padding-left: 1.5rem;
           padding-right: 1.5rem;
