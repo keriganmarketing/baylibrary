@@ -93,7 +93,8 @@ function getPageChildren($pageName)
     $children = get_pages([
         'parent'      => $parent->ID,
         'sort_column' => 'menu_order',
-        'sort_order'  => 'asc'
+        'sort_order'  => 'asc',
+        'post_status'    => 'publish'
     ]);
 
     return $children;
