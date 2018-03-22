@@ -26,6 +26,7 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PLJLG6L');</script>
     <!-- End Google Tag Manager -->
+    <meta name="google-site-verification" content="K-HH89-8I5tXsb2B7EKm7EPvCOmvSr4TL7xGNO3ALek" />
     <?php wp_head(); ?>
 </head>
 
