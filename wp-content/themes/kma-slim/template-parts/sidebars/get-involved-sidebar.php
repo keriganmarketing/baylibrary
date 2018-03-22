@@ -17,8 +17,8 @@
     Donate
 </a>
 <a class="button is-rounded is-primary is-outlined"
-   href="/about-us/donors/"
+   href="/about-us/board-of-directors/"
 >
-    Become a Donor
+    Board of Directors
 </a>
 </div>
