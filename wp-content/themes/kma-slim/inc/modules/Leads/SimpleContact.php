@@ -13,7 +13,7 @@ class SimpleContact extends Leads
             ]
         );
         parent::set('postType', 'Contact Submission');
-        parent::set('adminEmail', 'info@bcplfoundation.org');
+        parent::set('adminEmail', 'webmaster@bcplfoundation.org');
     }
 
     protected function showForm()
