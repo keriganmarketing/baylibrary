@@ -408,6 +408,11 @@ body {
   padding: 4rem 0 0;
   h1 {
     color: $tertiary;
+    padding-left: .75rem;
+
+    @media screen and (min-width:$desktop){
+      padding: 0;
+    }
   }
 }
 
