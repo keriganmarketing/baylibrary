@@ -3,9 +3,9 @@ Contributors: msaari
 Donate link: https://www.relevanssi.com/buy-premium/
 Tags: search, relevance, better search
 Requires at least: 4.0
-Tested up to: 4.9.4
+Tested up to: 5.0
 Requires PHP: 5.6
-Stable tag: 4.0.4
+Stable tag: 4.1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,7 @@ Do note that using Relevanssi may require large amounts (hundreds of megabytes) 
 * Highlight search terms in the documents when user clicks through search results.
 * Search comments, tags, categories and custom fields.
 * Multisite friendly.
+* bbPress support.
 
 = Advanced features =
 * Adjust the weighting for titles, tags and comments.
@@ -43,7 +44,7 @@ Do note that using Relevanssi may require large amounts (hundreds of megabytes) 
 * Disable indexing of post content and post titles with a simple filter hook.
 
 = Premium features (only in Relevanssi Premium) =
-* Indexing PDF content.
+* Indexing attachment content (PDF, Office, Open Office).
 * Improved spelling correction in "Did you mean?" suggestions.
 * Searching across multiple sites in the same multisite installation.
 * Search and index user profiles.
@@ -129,19 +130,77 @@ Each document database is full of useless words. All the little words that appea
 
 == Changelog ==
 
-= 4.0.4 =
-* Fixed shortcode: `searchform` shortcode didn't work properly.
-* Setting post type or post content weight to 0 didn't work.
-* Gravity Forms shortcode is now disabled in Relevanssi indexing.
-* New filter: `relevanssi_excerpt_query` filters the search query before building excerpts.
-* HTML tags are stripped from post excerpts when using the excerpt to build Relevanssi excerpts.
-* Fixed filter: `relevanssi_custom_field_value` didn't have the correct post ID parameter.
-* `relevanssi_get_permalink` doesn't add the `highlight` parameter to URLs outside search results pages anymore, and won't add the parameter to front page links either.
-* Relevanssi used `sanitize_hex_color`, which isn't actually reliably available.
-* Did you mean suggestions have been improved.
-* Single-word phrases are not allowed anymore, as they do no good. They are silently converted to non-phrases now.
+= 4.1.1.1 =
+* Adding the missing Gutenberg compatibility file.
+
+= 4.1.1 =
+* Relevanssi can now index Gutenberg reusable blocks. (This functionality broke once already before release, so that can happen, since Gutenberg is still in very active development.)
+* The `post__in` and `post__not_in` parameters didn't work, and are now fixed. `post_parent__in` and `post_parent__not_in` are also improved.
+* You can use named meta queries for sorting posts. Meta query sorting is improved in other ways as well.
+* Log export didn't work properly.
+* Adding stopwords from the common word list has been fixed.
+* The `relevanssi_get_words_having` filter hook is now also applied to the free version Did you mean queries.
+* New filters: `relevanssi_1day` and `relevanssi_7days` can be used to adjust the number of days for log displays, so instead of 1, 7 and 30 days you can have anything you want.
+
+= 4.1.0.1 =
+* Actually working admin search.
+
+= 4.1 =
+* New feature: You can now export the search log as a CSV file.
+* New feature: Admin Search page allows you to perform searches in WP admin using Relevanssi.
+* New filter: `relevanssi_admin_search_capability` can be used to adjust who sees the admin search page.
+* New filter: `relevanssi_entities_inside_pre` and `relevanssi_entities_inside_code` adjust how HTML entities are handled inside `pre` and `code` tags.
+* Numeric meta values (`meta_value_num`) are now sorted as numbers and not strings.
+* Pinned posts have `$post->relevanssi_pinned` set to 1 for debugging purposes, but you can also use this for styling the posts in the search results templates.
+* The Did you mean feature has been toned down a bit, to make the suggestions slightly less weird in some cases.
+* Post parent parameters now accept 0 as a value, making it easier to search for children of any post or posts without a parent.
+* Polylang compatibility has been improved.
+* Phrases with apostrophes inside work better.
+* The `relevanssi_excerpt` filter hook got a second parameter that holds the post ID.
+* Custom field sorting actually works now.
+* WP Search Suggest compatibility added.
+
+= 4.0.11 =
+* Home page links were getting the highlight parameter even though they shouldn't. This has been fixed.
+* Added support for WP JV Post Reading Groups.
+* Improved handling of HTML entities.
+* Events Made Easy Calendar shortcodes are now removed when building excerpts.
+* `set_time_limit()` was removed from the indexing; it's no longer necessary, and it can break the indexing on sites that don't allow the use of the function.
+* `relevanssi_post_title_before_tokenize` filter was moved a bit so that it's the last thing that runs before tokenizing.
+* Disabled shortcodes are handled better in the indexing: the shortcode names won't be indexed anymore like they were before.
+* Made sure there won't be a warning for non-numeric values when searching.
+* New filter: `relevanssi_clean_excerpt` lets you remove unwanted highlights from excerpts.
+* Highlighting works better with `pre` and `code` tags.
+* New filter: `relevanssi_comment_author_to_index` lets you filter comment author names before indexing.
+* `relevanssi_comment_content_to_index` doesn't include the comment author name anymore.
+
+= 4.0.10.1 =
+* The privacy features caused an error notice with certain Relevanssi configurations, and the plugin required WP 4.9.6.
+
+= 4.0.10 =
+* Privacy: If you log search queries, Relevanssi will suggest some additional content to your privacy policy page.
+* Privacy: Relevanssi now supports the new Privacy Policy and Personal Data tools in WordPress 4.9.6.
+* Saving synonyms with quotes worked, but the synonyms showed up wrong.
+* Relevanssi could in some situations override navigation menu links with links to the user profiles or taxonomy terms found in the search. This update fixes that behaviour.
+* Random order works again; using orderby `rand` didn't work properly. The `rand(seed)` format is also supported now.
+* Fixed quotes and apostrophes in Did you mean suggestions.
 
 == Upgrade notice ==
 
-= 4.0.4 =
-* Small improvements, prevents couple of possibly fatal problems.
+= 4.1.1.1 =
+* Adding the missing Gutenberg compatibility file.
+
+= 4.1.1 =
+* Minor improvements here and there, particularly in custom field sorting.
+
+= 4.1 =
+* New features and plenty of small fixes.
+
+= 4.0.11 =
+* Several small improvements, new filters and highlighting fixes.
+
+= 4.0.10.1 =
+* Privacy feature bug fix.
+
+= 4.0.10 =
+* Privacy update, with some bug fixes.
