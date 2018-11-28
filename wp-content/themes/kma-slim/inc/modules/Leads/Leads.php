@@ -102,7 +102,6 @@ class Leads
         }
 
         return $passCheck;
-
     }
 
     public function getIP() 
