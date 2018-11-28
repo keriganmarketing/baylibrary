@@ -14,6 +14,7 @@ class SimpleContact extends Leads
         );
         parent::set('postType', 'Contact Submission');
         parent::set('adminEmail', 'info@bcplfoundation.org');
+        parent::set('adminEmail', 'bryan@kerigan.com');
     }
 
     protected function showForm()
@@ -22,7 +23,7 @@ class SimpleContact extends Leads
         $form = str_replace('{{user-agent}}', $_SERVER['HTTP_USER_AGENT'], $form);
 		$form = str_replace('{{ip-address}}', parent::getIP(), $form);
         $form = str_replace('{{referrer}}', $_SERVER['HTTP_REFERER'], $form);
-        
+
         $formSubmitted = (isset($_POST['sec']) ? ($_POST['sec'] == '' ? true : false) : false );
         ob_start();
         if($formSubmitted){
