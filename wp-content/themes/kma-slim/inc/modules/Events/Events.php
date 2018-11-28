@@ -232,10 +232,10 @@ class Events
                 'recurr_readable' => $this->getReadableDate($start, $end, $recurrDays),
                 'time'            => (isset($post->event_details_time) ? $post->event_details_time : null),
                 'location'        => (isset($post->event_details_location) ? $post->event_details_location : null),
-                'featured'        => (isset($post->event_details_feature_on_home_page) ? $post->event_details_feature_on_home_page : null),
+                'featured'        => (isset($post->event_details_feature_on_home_page) && $post->event_details_feature_on_home_page != 'false' ? $post->event_details_feature_on_home_page : null),
                 'tickets_link'    => (isset($post->event_details_tickets_link) ? $post->event_details_tickets_link : null),
                 'facebook_link'   => (isset($post->event_details_facebook_event_link) ? $post->event_details_facebook_event_link : null),
-                'has_rsvp'        => (isset($post->event_details_enable_rsvp) ? $post->event_details_enable_rsvp : null),
+                'has_rsvp'        => (isset($post->event_details_enable_rsvp) && $post->event_details_enable_rsvp != 'false' ? $post->event_details_enable_rsvp : null),
                 'content'         => (isset($post->event_description_html) ? $post->event_description_html : null),
                 'link'            => get_permalink($post->ID),
             ];
@@ -275,7 +275,7 @@ class Events
 
     }
 
-    private function orderEvents($inputArray)
+    private function orderEvents($inputArray, $direction = 'ASC')
     {
 
         $sorter      = [];
@@ -285,7 +285,11 @@ class Events
         foreach ($inputArray as $key => $var) {
             $sorter[$key] = $var['start'];
         }
-        asort($sorter);
+        if($direction == 'ASC'){
+            asort($sorter);
+        }elseif($direction == 'DESC'){
+            arsort($sorter);
+        }
         foreach ($sorter as $key => $var) {
             $returnArray[$key] = $inputArray[$key];
         }
@@ -361,13 +365,48 @@ class Events
 
         $metaQuery   = array_merge($metaQuery, $args);
         $outputArray = $this->getEvents($metaQuery, $category, $limit);
-        foreach ($outputArray as $key => $var) {
-            if ($var['start'] < $today + 1) {
-                $outputArray[$key]['start'] = $this->advanceDate($var);
+        if(is_array($outputArray) && count($outputArray)>0) {
+            foreach ($outputArray as $key => $var) {
+                if ($var['start'] < $today + 1) {
+                    $outputArray[$key]['start'] = $this->advanceDate($var);
+                }
             }
+            $outputArray = $this->orderEvents($outputArray,'ASC');
         }
 
-        $outputArray = $this->orderEvents($outputArray);
+        return $outputArray;
+
+    }
+
+    public function getPastEvents($args = [], $category = '', $limit = -1)
+    {
+
+        $today = date('Ymd');
+
+        $metaQuery['meta_query'] = [
+            'relation' => 'AND',
+            [
+                'key'     => 'event_details_end',
+                'value'   => $today,
+                'compare' => '<'
+            ],
+            [
+                'key'     => 'event_details_recurring',
+                'value'   => 'none',
+                'compare' => '=='
+            ]
+        ];
+
+        $metaQuery   = array_merge($metaQuery, $args);
+        $outputArray = $this->getEvents($metaQuery, $category, $limit);
+        if(is_array($outputArray) && count($outputArray)>0) {
+            foreach ($outputArray as $key => $var) {
+                if ($var['start'] < $today + 1) {
+                    $outputArray[$key]['start'] = $this->advanceDate($var);
+                }
+            }
+            $outputArray = $this->orderEvents($outputArray,'DESC');
+        }
 
         return $outputArray;
 
@@ -377,13 +416,14 @@ class Events
     {
 
         $outputArray = $this->getUpcomingEvents([], '', -1);
-        foreach ($outputArray as $key => $var) {
-            if ($var['featured'] != 'on') {
-                unset($outputArray[$key]);
+        if(is_array($outputArray) && count($outputArray)>0) {
+            foreach ($outputArray as $key => $var) {
+                if ($var['featured'] != 'on') {
+                    unset($outputArray[$key]);
+                }
             }
+            $outputArray = array_slice($outputArray, 0, $limit, false);
         }
-
-        $outputArray = array_slice($outputArray, 0, $limit, false);
 
         return $outputArray;
 

@@ -15,7 +15,7 @@ class SimpleRSVP extends Leads
             ]
         );
         parent::set('postType', 'RSVP Submission');
-        parent::set('adminEmail', 'support@kerigan.com');
+        parent::set('adminEmail', 'info@bcplfoundation.org');
     }
 
     protected function showForm($eventName)

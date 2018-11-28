@@ -26,7 +26,7 @@ class Leads
         $this->domain     = 'bcplfoundation.org';
 
         //separate multiple email addresses with a ';'
-        $this->adminEmail = 'bryan@kerigan.com';
+        $this->adminEmail = 'info@bcplfoundation.org';
         $this->ccEmail    = ''; //Admin email only
         $this->bccEmail   = 'support@kerigan.com';
 

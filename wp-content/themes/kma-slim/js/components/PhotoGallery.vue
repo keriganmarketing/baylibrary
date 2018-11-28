@@ -3,7 +3,7 @@
         <div class="columns is-multiline" >
             <div class="column is-6 is-4-desktop" v-for="photo in photos" >
                 <div class="photo-tile has-text-centered" @click="toggleGallery(photo)">
-                    <figure class="image is-3by2">
+                    <figure class="image is-3by2 hide-overflow">
                         <img :id="photo.slug" :src="photo.url" :alt="photo.name" >
                     </figure>
                     <p>{{ photo.name }}</p>
@@ -25,6 +25,9 @@
         methods: {
             toggleGallery( photo ){
                 this.$parent.$emit('toggleModal','photoModal','<img id="' + photo.slug + '" src="' + photo.url + '" alt="' + photo.name + '" >');
+            },
+            nextPhoto( photo ){
+                console.log( photo )
             }
         }
     }

@@ -35,10 +35,10 @@ $eventsArray = $events->getUpcomingEvents();
                     <div class="column is-one-fifth footer-nav-menu">
                         <h4 class="title"><a href="/events/">Events</a></h4>
                         <ul>
-                            <?php foreach ($eventsArray as $event) { ?>
-                                <li><a href="<?= $event['link']; ?>"
-                                       class="footer-submenu-item"><?= $event['name']; ?></a></li>
-                            <?php } ?>
+                            <li><a href="/events/"
+                                       class="footer-submenu-item">Upcoming Events</a></li>
+                            <li><a href="/past-events/"
+                                   class="footer-submenu-item">Past Events</a></li>
                         </ul>
                     </div>
                     <div class="column is-narrow footer-nav-menu">
@@ -52,7 +52,7 @@ $eventsArray = $events->getUpcomingEvents();
                     </div>
                     <div class="column is-narrow footer-nav-menu">
                         <h4 class="title"><a href="/contact/">Contact</a></h4>
-                        <p><a href="tel:#" class="footer-submenu-item phone">XXX-XXX-XXXX</a></p>
+                        <p><a href="mailto:info@bcplfoundation.org" class="footer-submenu-item phone">info@bcplfoundation.org</a></p>
                         <div class="social">
                             <?php
                             $socialLinks = new SocialSettingsPage();

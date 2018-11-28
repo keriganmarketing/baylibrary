@@ -8,7 +8,7 @@ class ManualSubscribe extends Leads
     {
         parent::__construct ();
         parent::set('postType', 'Subscription');
-        parent::set('adminEmail', 'support@kerigan.com');
+        parent::set('adminEmail', 'info@bcplfoundation.org');
     }
 
     protected function showForm()
