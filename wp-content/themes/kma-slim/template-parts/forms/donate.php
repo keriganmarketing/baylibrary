@@ -115,7 +115,7 @@
 
                 <input type="hidden" name="business" value="<?= $business; ?>">
                 <input type="hidden" name="cmd" value="<?= $buttonHandle; ?>">
-                <!-- <input type="hidden" name="hosted_button_id" value="<?= $hostedButtonId; ?>"> -->
+                <input type="hidden" name="hosted_button_id" value="<?= $hostedButtonId; ?>">
                 <input type="hidden" name="currency_code" value="<?= $currencyCode; ?>">
 
             </div>
