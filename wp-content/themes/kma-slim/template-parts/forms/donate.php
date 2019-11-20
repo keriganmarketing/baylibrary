@@ -110,12 +110,12 @@
                     <input type="text" class="input is-large" name="donationAmount" value="" placeholder="">
                     <span class="icon is-small is-left is-medium">
                         <i class="fa">$</i>
-                      </span>
+                    </span>
                 </div>
 
                 <input type="hidden" name="business" value="<?= $business; ?>">
                 <input type="hidden" name="cmd" value="<?= $buttonHandle; ?>">
-                <input type="hidden" name="hosted_button_id" value="<?= $hostedButtonId; ?>">
+                <!-- <input type="hidden" name="hosted_button_id" value="<?= $hostedButtonId; ?>"> -->
                 <input type="hidden" name="currency_code" value="<?= $currencyCode; ?>">
 
             </div>
