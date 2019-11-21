@@ -2,7 +2,7 @@
     $business = 'Bay County Public Library Foundation';
     $buttonHandle = '_s-xclick';
     $currencyCode = 'USD';
-    $hostedButtonId = 'RU9D4TAQVLH9S';
+    $hostedButtonId = 'HWY5JTHYE8DKS';
     $hostedButtonId50 = 'QR8RX85QUHPUU';
     $hostedButtonId100 = 'P64DD7AZKE9HY';
     $hostedButtonId250 = 'EPF4PPJ37WYK4';
@@ -107,7 +107,7 @@
         <div class="columns is-aligned is-mobile">
             <div class="column is-12-mobile is-narrow">
                 <div class="control has-icons-left">
-                    <input type="text" class="input is-large" name="donationAmount" value="" placeholder="">
+                    <input type="text" class="input is-large" name="amount" value="" placeholder="">
                     <span class="icon is-small is-left is-medium">
                         <i class="fa">$</i>
                     </span>
