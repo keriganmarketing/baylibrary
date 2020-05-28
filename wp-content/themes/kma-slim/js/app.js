@@ -1,5 +1,3 @@
-require("babel-polyfill");
-
 window.Vue = require('vue');
 
 import message from './components/message.vue';

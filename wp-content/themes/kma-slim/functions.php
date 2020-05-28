@@ -44,12 +44,12 @@ $rsvp = new SimpleRSVP();
 $rsvp->setupAdmin();
 $rsvp->setupShortcode();
 
-$pageField = new PageField();
-$pageField->addField(get_option('page_on_front'), 'Get involved', [
-    'Section Title' => 'text',
-    'Section Text'  => 'wysiwyg',
-    'Section Photo' => 'image'
-]);
+// $pageField = new PageField();
+// $pageField->addField(get_option('page_on_front'), 'Get involved', [
+//     'Section Title' => 'text',
+//     'Section Text'  => 'wysiwyg',
+//     'Section Photo' => 'image'
+// ]);
 
 add_action('after_setup_theme', function () {
 
@@ -82,6 +82,12 @@ add_action('after_setup_theme', function () {
     add_editor_style();
 
 });
+
+// Load admin stylesheet
+function custom_admin_css() {
+    wp_enqueue_style('backend-css', get_template_directory_uri() . '/admin.css', [], null);
+}
+add_action('admin_head', 'custom_admin_css');
 
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('scripts', get_template_directory_uri() . '/app.js', [], '0.0.1', true);
