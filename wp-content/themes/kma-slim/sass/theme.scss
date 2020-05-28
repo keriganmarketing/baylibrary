@@ -622,6 +622,10 @@ body {
         }
       }
 
+      ul.blocks-gallery-grid {
+        margin: 0 !important; padding: 0 !important;
+      }
+
       .title {
         font-weight: $weight-bold;
       }
@@ -905,10 +909,10 @@ body {
       margin-bottom: 1rem;
     }
 
-    .blocks-gallery-grid {
-      margin: 0; padding: 0;
-    }
+    
   }
+
+
 
   .entry-content.has-sidebar {
     @media screen and (min-width: $desktop){
